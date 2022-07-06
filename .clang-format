@@ -1,0 +1,13 @@
+BasedOnStyle: Microsoft
+ColumnLimit: 80
+IndentWidth: 4
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AlwaysBreakTemplateDeclarations: Yes
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterClass: false
+    AfterControlStatement: Never
+    AfterStruct: false
+    BeforeElse: false
+PointerAlignment: Left
