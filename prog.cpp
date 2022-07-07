@@ -8,7 +8,7 @@
 
 #include "Metal.hpp"
 
-const int N = 32;
+const int N = 256;
 
 class Executor {
   public:
@@ -115,8 +115,7 @@ class Executor {
             std::chrono::duration_cast<std::chrono::microseconds>(t1 - t0);
         auto duration2 =
             std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1);
-        std::cout << "Preparation: " << duration1.count() << "us" << std::endl;
-        std::cout << "Computation: " << duration2.count() << "us" << std::endl;
+        std::cout << std::endl;
         std::cout << std::endl;
         std::cout << "Error counter: " << counter_error << std::endl;
         std::cout << "Commi counter: " << counter_committed << std::endl;
@@ -125,6 +124,9 @@ class Executor {
         std::cout << "NotEn counter: " << counter_not_enqueued << std::endl;
         std::cout << "Compl counter: " << counter_completed << std::endl;
         std::cout << "Total counter: " << counter << std::endl;
+        std::cout << std::endl;
+        std::cout << "Preparation: " << duration1.count() << "us" << std::endl;
+        std::cout << "Computation: " << duration2.count() << "us" << std::endl;
     }
 
     auto GenerateMatrix(std::default_random_engine& rng) -> void
@@ -163,6 +165,18 @@ int main(int argc, const char* argv[])
     NS::AutoreleasePool* p_pool = NS::AutoreleasePool::alloc()->init();
 
     Executor executor;
+    executor.GenerateMatrix(rng);
+    executor.GenerateVector(rng);
+    executor.Compute();
+    executor.GenerateMatrix(rng);
+    executor.GenerateVector(rng);
+    executor.Compute();
+    executor.GenerateMatrix(rng);
+    executor.GenerateVector(rng);
+    executor.Compute();
+    executor.GenerateMatrix(rng);
+    executor.GenerateVector(rng);
+    executor.Compute();
     executor.GenerateMatrix(rng);
     executor.GenerateVector(rng);
     executor.Compute();
